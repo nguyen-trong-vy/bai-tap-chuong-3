@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+    <meta charset="UTF-8">
+    <title>{% block title %}LibraryMS{% endblock %}</title>
+    <style>
+        body { font-family: Arial, sans-serif; margin: 20px 40px; }
+        nav { background: #f0f0f0; padding: 12px; margin-bottom: 20px; border-radius: 4px; }
+        nav a { margin-right: 15px; text-decoration: none; font-weight: bold; color: #2c3e50; }
+        nav a:hover { text-decoration: underline; }
+        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
+        th, td { border: 1px solid #ccc; padding: 8px 12px; text-align: left; }
+        th { background: #eaeaea; }
+        .filter-bar { margin: 15px 0; }
+        .filter-bar a { display: inline-block; padding: 5px 10px; margin-right: 5px; border: 1px solid #007bff; border-radius: 3px; text-decoration: none; color: #007bff; }
+        .filter-bar a.active { background: #007bff; color: white; }
+        .error-box { padding: 15px; background: #ffebee; border: 1px solid #f44336; border-radius: 4px; color: #c62828; }
+    </style>
+</head>
+<body>
+    <!-- Menu chung cho toàn hệ thống -->
+    <nav>
+        <a href="{{ url_for('home') }}">Trang chủ</a>
+        <a href="{{ url_for('list_books') }}">Danh sách sách</a>
+        <a href="{{ url_for('api_books') }}" target="_blank">API Sách</a>
+    </nav>
+
+    <main>
+        {% block content %}{% endblock %}
+    </main>
+</body>
+</html>
