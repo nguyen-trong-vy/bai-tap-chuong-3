@@ -2,31 +2,27 @@
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
-    <title>{% block title %}LibraryMS{% endblock %}</title>
+    <title>{% block title %}{% endblock %} - Sông Hương</title>
+
+    {% block styles %}
     <style>
-        body { font-family: Arial, sans-serif; margin: 20px 40px; }
-        nav { background: #f0f0f0; padding: 12px; margin-bottom: 20px; border-radius: 4px; }
-        nav a { margin-right: 15px; text-decoration: none; font-weight: bold; color: #2c3e50; }
+        body { font-family: Arial, sans-serif; margin: 24px; line-height: 1.6; }
+        nav { background-color: #f3ede2; padding: 12px 18px; margin-bottom: 24px; border-radius: 6px; }
+        nav a { margin-right: 18px; text-decoration: none; color: #5d4037; font-weight: bold; }
         nav a:hover { text-decoration: underline; }
-        table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-        th, td { border: 1px solid #ccc; padding: 8px 12px; text-align: left; }
-        th { background: #eaeaea; }
-        .filter-bar { margin: 15px 0; }
-        .filter-bar a { display: inline-block; padding: 5px 10px; margin-right: 5px; border: 1px solid #007bff; border-radius: 3px; text-decoration: none; color: #007bff; }
-        .filter-bar a.active { background: #007bff; color: white; }
-        .error-box { padding: 15px; background: #ffebee; border: 1px solid #f44336; border-radius: 4px; color: #c62828; }
+        footer { margin-top: 40px; border-top: 1px solid #ddd; padding-top: 14px; color: #666; font-size: 0.9em; }
     </style>
+    {% endblock %}
 </head>
 <body>
-    <!-- Menu chung cho toàn hệ thống -->
-    <nav>
-        <a href="{{ url_for('home') }}">Trang chủ</a>
-        <a href="{{ url_for('list_books') }}">Danh sách sách</a>
-        <a href="{{ url_for('api_books') }}" target="_blank">API Sách</a>
-    </nav>
+    <!-- Nhúng menu từ _navbar.html -->
+    {% include "_navbar.html" %}
 
     <main>
         {% block content %}{% endblock %}
     </main>
+
+    <!-- Nhúng chân trang từ _footer.html -->
+    {% include "_footer.html" %}
 </body>
 </html>

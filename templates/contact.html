@@ -1,0 +1,12 @@
+{% extends "base.html" %}
+
+{% block title %}Liên hệ{% endblock %}
+
+{% block content %}
+    <h1>Thông tin liên hệ</h1>
+    <p><strong>Quán:</strong> {{ shop.name }}</p>
+    <p><strong>Địa chỉ:</strong> {{ shop.address }}</p>
+    <p><strong>Điện thoại:</strong> {{ shop.phone }}</p>
+{% endblock %}
+
+<!-- Thử nghiệm: nếu bạn viết <h1>...</h1> ở ngoài các thẻ block ở đây, Jinja2 sẽ bỏ qua hoàn toàn và không hiển thị ra trình duyệt -->

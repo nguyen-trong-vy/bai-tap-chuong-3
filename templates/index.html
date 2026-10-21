@@ -1,11 +1,9 @@
 {% extends "base.html" %}
 
-{% block title %}Trang chủ - LibraryMS{% endblock %}
+{% block title %}Trang chủ{% endblock %}
 
 {% block content %}
-    <h2>Thống kê thư viện</h2>
-    <ul>
-        <li><strong>Tổng số đầu sách:</strong> {{ total_books }}</li>
-        <li><strong>Số sách sẵn sàng cho mượn:</strong> {{ available_books }}</li>
-    </ul>
+    <h1>Chào mừng đến với {{ shop.name }}</h1>
+    <p>Không gian thưởng thức cà phê ấm cúng và thư giãn tại Cố đô Huế.</p>
+    <p>Hãy ghé thăm trang <a href="{{ url_for('menu') }}">Thực đơn</a> để chọn đồ uống yêu thích của bạn!</p>
 {% endblock %}

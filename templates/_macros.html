@@ -1,0 +1,34 @@
+{# Macro hiển thị thẻ thông tin 1 món #}
+{% macro item_card(item) %}
+<div class="card" style="border: 1px solid #ddd; padding: 12px; margin-bottom: 12px; border-radius: 6px; width: 260px;">
+    <h3 style="margin: 0 0 8px 0; color: #3e2723;">{{ item.name }}</h3>
+    <p style="margin: 0; color: #c62828; font-weight: bold;">
+        {{ "{:,}".format(item.price).replace(",", ".") }} đ
+    </p>
+</div>
+{% endmacro %}
+
+{# Macro thanh phân trang #}
+{% macro pagination(page, pages, endpoint) %}
+<div class="pagination" style="margin-top: 20px;">
+    {# Nút « Trước (chỉ xuất hiện khi page > 1) #}
+    {% if page > 1 %}
+        <a href="{{ url_for(endpoint, page=page - 1) }}">« Trước</a> · 
+    {% endif %}
+
+    {# Danh sách các trang 1, 2, 3... #}
+    {% for p in range(1, pages + 1) %}
+        {% if p == page %}
+            <strong>{{ p }}</strong>
+        {% else %}
+            <a href="{{ url_for(endpoint, page=p) }}">{{ p }}</a>
+        {% endif %}
+        {% if not loop.last %} · {% endif %}
+    {% endfor %}
+
+    {# Nút Sau » (chỉ xuất hiện khi page < pages) #}
+    {% if page < pages %}
+         · <a href="{{ url_for(endpoint, page=page + 1) }}">Sau »</a>
+    {% endif %}
+</div>
+{% endmacro %}
