@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block title %}Bài 2 - Tính điểm học phần{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-12 col-md-6 col-lg-5">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-primary text-white text-center py-3">
+                <h4 class="mb-0 fw-bold">Bài 2: Tính điểm học phần</h4>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST" action="{{ url_for('bai2') }}">
+                    <!-- Chuyên cần (10%) -->
+                    <div class="mb-3">
+                        <label for="cc" class="form-label fw-semibold">Chuyên cần (10%):</label>
+                        <input type="text"
+                               class="form-control {% if errors.cc %}is-invalid{% endif %}"
+                               id="cc" name="cc" value="{{ cc }}" placeholder="Nhập điểm từ 0 - 10">
+                        {% if errors.cc %}
+                            <div class="invalid-feedback">{{ errors.cc }}</div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Giữa kỳ (30%) -->
+                    <div class="mb-3">
+                        <label for="gk" class="form-label fw-semibold">Giữa kỳ (30%):</label>
+                        <input type="text"
+                               class="form-control {% if errors.gk %}is-invalid{% endif %}"
+                               id="gk" name="gk" value="{{ gk }}" placeholder="Nhập điểm từ 0 - 10">
+                        {% if errors.gk %}
+                            <div class="invalid-feedback">{{ errors.gk }}</div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Cuối kỳ (60%) -->
+                    <div class="mb-3">
+                        <label for="ck" class="form-label fw-semibold">Cuối kỳ (60%):</label>
+                        <input type="text"
+                               class="form-control {% if errors.ck %}is-invalid{% endif %}"
+                               id="ck" name="ck" value="{{ ck }}" placeholder="Nhập điểm từ 0 - 10">
+                        {% if errors.ck %}
+                            <div class="invalid-feedback">{{ errors.ck }}</div>
+                        {% endif %}
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">Tính điểm</button>
+                </form>
+
+                <!-- Hiển thị kết quả -->
+                {% if result %}
+                    <div class="alert alert-success mt-4 mb-0 text-center fs-5 fw-bold" role="alert">
+                        Điểm học phần: {{ result }}
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}

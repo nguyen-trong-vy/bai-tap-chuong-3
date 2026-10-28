@@ -1,0 +1,12 @@
+# Môi trường ảo (Virtual Environment)
+.venv/
+venv/
+ENV/
+
+# File biên dịch rác của Python
+__pycache__/
+*.py[cod]
+
+# Cấu hình riêng của VS Code hoặc hệ thống (nếu có)
+.vscode/
+.DS_Store

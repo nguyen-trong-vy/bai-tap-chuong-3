@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+
+{% block title %}Bài 3 - Tính chỉ số BMI{% endblock %}
+
+{% block content %}
+<div class="row justify-content-center">
+    <div class="col-12 col-md-6 col-lg-5">
+        <div class="card shadow-sm border-0">
+            <div class="card-header bg-primary text-white text-center py-3">
+                <h4 class="mb-0 fw-bold">Bài 3: Tính chỉ số BMI</h4>
+            </div>
+            <div class="card-body p-4">
+                <form method="POST" action="{{ url_for('bai3') }}">
+                    <!-- Chiều cao (cm) -->
+                    <div class="mb-3">
+                        <label for="height" class="form-label fw-semibold">Chiều cao (cm):</label>
+                        <input type="text"
+                               class="form-control {% if errors.height %}is-invalid{% endif %}"
+                               id="height"
+                               name="height"
+                               value="{{ height }}"
+                               placeholder="Ví dụ: 170 hoặc 165,5">
+                        {% if errors.height %}
+                            <div class="invalid-feedback">
+                                {{ errors.height }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <!-- Cân nặng (kg) -->
+                    <div class="mb-3">
+                        <label for="weight" class="form-label fw-semibold">Cân nặng (kg):</label>
+                        <input type="text"
+                               class="form-control {% if errors.weight %}is-invalid{% endif %}"
+                               id="weight"
+                               name="weight"
+                               value="{{ weight }}"
+                               placeholder="Ví dụ: 65 hoặc 65,5">
+                        {% if errors.weight %}
+                            <div class="invalid-feedback">
+                                {{ errors.weight }}
+                            </div>
+                        {% endif %}
+                    </div>
+
+                    <button type="submit" class="btn btn-primary w-100 py-2 fw-semibold">Tính BMI</button>
+                </form>
+
+                <!-- Hiển thị kết quả -->
+                {% if result %}
+                    <div class="alert alert-{{ result.color }} mt-4 mb-0 text-center shadow-sm" role="alert">
+                        <div class="fs-5 fw-bold mb-1">
+                            {{ result.bmi }} - {{ result.category }}
+                        </div>
+                        <div class="small">
+                            Cân nặng nên có: <strong>{{ result.min_weight }} – {{ result.max_weight }} kg</strong>
+                        </div>
+                    </div>
+                {% endif %}
+            </div>
+        </div>
+    </div>
+</div>
+{% endblock %}
